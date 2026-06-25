@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface antialiased overflow-hidden;
+    min-height: 100dvh;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 74, 198, 0.15); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 74, 198, 0.3); }
+
+/* Hide scrollbar utility */
+.custom-scrollbar::-webkit-scrollbar { display: none; }
+
+/* =====================
+   GLASS MORPHISM
+===================== */
+.glass-panel {
+  background: rgba(248, 249, 255, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(115, 118, 134, 0.15);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-input:focus-within {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: #004ac6;
+  box-shadow: 0 0 0 4px rgba(0, 74, 198, 0.1);
+}
+
+/* =====================
+   BACKGROUND PATTERNS
+===================== */
+.bg-dot-pattern {
+  background-color: #f8f9ff;
+  background-image: radial-gradient(#d3e4fe 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float-animation { animation: floating 4s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-effect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { opacity: 0.3; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.pulse-ring { animation: pulseRing 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.animate-status-pulse { animation: subtlePulse 3s ease-in-out infinite; }
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.03); }
+}
+.glow-bg { animation: pulseGlow 12s ease-in-out infinite; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+@keyframes slideInBottom {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-in-bottom { animation: slideInBottom 0.5s ease-out forwards; }
+
+/* Chat item interactions */
+.chat-item-hover {
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.chat-item-hover:hover { background-color: rgba(0, 74, 198, 0.04); }
+.chat-item-hover:active { transform: scale(0.98); }
+
+/* Selection */
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: #0b1c30;
+}
+
+/* Loading bar */
+.loading-bar {
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Active ring for nav items */
+.active-ring {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #004ac6;
+}
